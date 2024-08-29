@@ -45,6 +45,7 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "$vps_key" 
     - echo "$vps_key" | base64 --decode > ~/.ssh/id_rsa 
     - chmod 600 ~/.ssh/id_rsa
+    - cat ~/.ssh/id_rsa
     - echo "Host *" > ~/.ssh/config
     - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
     - echo "    UserKnownHostsFile=/dev/null" >> ~/.ssh/config
