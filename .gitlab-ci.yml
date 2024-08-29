@@ -52,7 +52,7 @@ deploy-job:      # This job runs in the deploy stage.
     - apt-get install -y ansible
   script:
     - echo "Testing SSH connection"
-    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $MY_SSH_REMOTE_SERVE '" 'echo "SSH connection successful"'
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@rabbeh.giize.com -p 22 '" 'echo "SSH connection successful"'
     - echo "Navigating to Ansible directory"
     - cd ansible
     - echo "Running Ansible Playbook"
