@@ -49,11 +49,12 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
     - echo "    UserKnownHostsFile=/dev/null" >> ~/.ssh/config
     - apt-get update
-    - apt-get install -y ansible
+    # - apt-get install -y ansible
   script:
     - echo "Testing SSH connection"
     - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@rabbeh.giize.com -p 22 '" 'echo "SSH connection successful"'
     - echo "Navigating to Ansible directory"
+    - echo "cd ansible"
     - cd ansible
     - echo "Running Ansible Playbook"
-    - ansible-playbook -i inventory.ini playbook.yaml
+    # - ansible-playbook -i inventory.ini playbook.yaml
