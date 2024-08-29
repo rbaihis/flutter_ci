@@ -48,11 +48,12 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "Host *" > ~/.ssh/config
     - echo "    StrictHostKeyChecking no" >> ~/.ssh/config
     - echo "    UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+    - echo "Testing SSH connection"
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $MY_SSH_REMOTE_SERVER 'echo "SSH connection successful"'
     - apt-get update
     - apt-get install -y ansible
   script:
-    - echo "Testing SSH connection"
-    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $MY_SSH_REMOTE_SERVER 'echo "SSH connection successful"'
+    - 
     - echo "Navigating to Ansible directory"
     - echo "cd ansible"
     - cd ansible
