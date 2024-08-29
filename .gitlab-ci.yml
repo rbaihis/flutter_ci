@@ -59,3 +59,5 @@ deploy-job:      # This job runs in the deploy stage.
     - cd ansible
     - echo "Running Ansible Playbook"
     - ansible-playbook -i inventory.ini playbook.yaml
+  dependencies:
+    - build
