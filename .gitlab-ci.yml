@@ -17,23 +17,23 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 image: ubuntu:latest
 stages:          # List of stages for jobs, and their order of execution
-  # - build
+  - build
   - deploy
 
 variables:
   MY_SSH_REMOTE_SERVER: 'root@rabbeh.giize.com -p 22'
 
-# build-job:       # This job runs in the build stage, which runs first.
-#   stage: build
-#   script:
-#     - echo "Setting up Flutter"
-#     - git clone https://github.com/flutter/flutter.git -b stable --depth 1
-#     - export PATH="$PATH:`pwd`/flutter/bin"
-#     - flutter --version
-#     - flutter pub get
-#     - flutter config --enable-web
-#     - flutter build web --release
-#     - cp -R build/web/* ansible/template/flutter_build
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - echo "Setting up Flutter"
+    - git clone https://github.com/flutter/flutter.git -b stable --depth 1
+    - export PATH="$PATH:`pwd`/flutter/bin"
+    - flutter --version
+    - flutter pub get
+    - flutter config --enable-web
+    - flutter build web --release
+    - cp -R build/web/* ansible/template/flutter_build
 
 
 deploy-job:      # This job runs in the deploy stage.
@@ -52,10 +52,10 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "Testing SSH connection"
     - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $MY_SSH_REMOTE_SERVER 'echo "SSH connection successful"'
     - apt-get update
-    # - apt-get install -y ansible
+    - apt-get install -y ansible
   script:
     - echo "Navigating to Ansible directory"
     - echo "cd ansible"
     - cd ansible
     - echo "Running Ansible Playbook"
-    # - ansible-playbook -i inventory.ini playbook.yaml
+    - ansible-playbook -i inventory.ini playbook.yaml
