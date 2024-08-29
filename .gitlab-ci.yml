@@ -42,6 +42,7 @@ deploy-job:      # This job runs in the deploy stage.
   before_script:
     - apt-get update && apt-get install -y coreutils
     - mkdir -p ~/.ssh
+    - echo "$vps_key" 
     - echo "$vps_key" | base64 --decode > ~/.ssh/id_rsa 
     - chmod 600 ~/.ssh/id_rsa
     - echo "Host *" > ~/.ssh/config
