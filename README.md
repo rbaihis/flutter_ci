@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://github.com/rbaihis/auto-deploy">
-   Flutter auto-deploy with ansible
+   Flutter auto-deploy with ansible.
    
   </a>
 </h1>
